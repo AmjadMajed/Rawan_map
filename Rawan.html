@@ -1,0 +1,62 @@
+<!--
+
+To run this demo, you need to replace 'YOUR_API_KEY' with an API key from the ArcGIS Developer dashboard.
+
+Sign up for a free account and get an API key.
+
+https://developers.arcgis.com/documentation/mapping-apis-and-services/get-started/
+
+ -->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>ArcGIS API for JavaScript Tutorials: Display a map</title>
+
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.21/"></script>
+
+    <script>
+        require(["esri/config", "esri/Map", "esri/views/MapView", "esri/layers/FeatureLayer"],
+            function (esriConfig, Map, MapView, FeatureLayer) {
+
+                esriConfig.apiKey = "AAPKee7d3b3a70e7429f90f84b2efbbc0a81RNt5FlFCx1HRlnNxgtJ4dFHj3vRjuazaIkhiDj09XbnSPZqp1x8PowVANc4w3t6p";
+
+                const map = new Map({
+                    basemap: "arcgis-topographic" // Basemap layer service
+                });
+
+                const view = new MapView({
+                    map: map,
+                    center: [-118.805, 34.027], // Longitude, latitude
+                    zoom: 13, // Zoom level
+                    container: "viewDiv" // Div element
+                });
+
+                const layer = new FeatureLayer({
+                    // URL to the service
+                    url: "https://services9.arcgis.com/SKX4Ho42BPrgC7Qi/arcgis/rest/services/as_map/FeatureServer"
+                });
+
+            });
+    </script>
+
+</head>
+
+<body>
+    <div id="viewDiv"></div>
+</body>
+
+</html>
